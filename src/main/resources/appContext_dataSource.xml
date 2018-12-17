@@ -6,7 +6,8 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd ">
-    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+    <context:component-scan base-package="com.su.ssm.client.service"></context:component-scan>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"></property>
@@ -16,13 +17,13 @@
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
-        <property name="typeAliasesPackage" value="com.su.ssm.client"></property>
-        <property name="mapperLocations" value="classpath:mappers/**"></property>
+        <property name="typeAliasesPackage" value="com.su.ssm.client.model"></property>
+        <property name="mapperLocations" value="classpath:mappers/UserInfoMapper.xml"></property>
 
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-        <property name="basePackage" value="com.su.ssm.client"></property>
-        
+        <property name="basePackage" value="com.su.ssm.client.mapper"></property>
+
     </bean>
 </beans>

@@ -1,5 +1,9 @@
 package com.su.ssm.client.model;
 
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
+@ToString
 public class UserInfo {
     private String id;
 

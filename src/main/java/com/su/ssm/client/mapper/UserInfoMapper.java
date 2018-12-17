@@ -1,7 +1,9 @@
 package com.su.ssm.client.mapper;
 
 import com.su.ssm.client.model.UserInfo;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserInfoMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +16,6 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+
+    UserInfo selectByPassword(UserInfo info);
 }
