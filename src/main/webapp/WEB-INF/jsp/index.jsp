@@ -43,6 +43,9 @@
             margin-bottom: 10px;
             height: 10px;
         }
+        .display{
+            display: none;
+        }
     </style>
     <%--<script type="text/javascript">--%>
         <%--$(function () {--%>
@@ -53,26 +56,7 @@
     <%--</script>--%>
 
 
-    <script type="text/javascript">
-        function myFunction(){
-            alert("你好，我是一个警告框！");
-        }
-        function myclick() {
-            alert("点击");
-        }
-        function formSubmit() {
-            <%
-            System.out.println("进入");
-            %>
-            var userName=document.getElementById("userName").value;
-            if (userName == null || userName ==''){
-                alert("用户名不能为空");
-                return false;
-            }else {
-                alert(userName);
-            }
-        }
-    </script>
+
 </head>
 <body>
 <%--<form id="from" method="post" action="saveUser"  onsubmit="formSubmit()">--%>
@@ -119,8 +103,52 @@
         </div>
     </div>
 </form>
-
+<a id="disp">隐藏图片</a><br>
+<img id="imgid1" class="a1" src="img/1.jpg" width="50" height="50">
+<img id="imgid2" class="a1" src="img/2.jpg" width="50" height="50">
+<img id="imgid3" class="a1" src="img/3.jpg" width="50" height="50">
+<br>
+<img id="imgid" src="img/1.jpg" width="400 " height="400">
 <%--<input type="button" onclick="myFunction()" value="显示警告框" />--%>
+
+<script type="text/javascript">
+
+    var imgid=document.getElementById("imgid");
+    var imgid1 = document.getElementById("imgid1");
+    var imgid2 = document.getElementById("imgid2");
+    var imgid3= document.getElementById("imgid3");
+    var disp= document.getElementById("disp");
+    var str1 = "RE1021";
+    var str2 = "RE2021";
+    var str3 = "RE2022";
+    console.log("str1"+(str1.lastIndexOf("1") == (str1.length-1)));
+    console.log("str2"+(str2.lastIndexOf("1") == (str2.length-1)));
+    console.log("str3:"+(str3.lastIndexOf("1") == (str3.length-1)));
+    console.log("str3"+(str3.lastIndexOf("R") == (str3.length-1)));
+
+    imgid1.onclick = function () {
+        imgid.src="img/1.jpg";
+    }
+
+    imgid2.onclick = function () {
+        imgid.src="img/2.jpg";
+    }
+
+    imgid3.onclick = function () {
+        imgid.src="img/3.jpg";
+    }
+    disp.onclick = function () {
+        if(disp.text == "隐藏图片"){
+            imgid.className = "display";
+            disp.innerHTML="显示大图";
+        }else{
+            imgid.className = "";
+            disp.innerHTML="隐藏图片";
+        }
+
+    }
+
+</script>
 </body>
 
 </html>
